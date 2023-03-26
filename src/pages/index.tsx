@@ -2,10 +2,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const curProName = process.env.NEXT_PUBLIC_PROJECT_NAME
+  console.log(curProName)
   return (
     <>
       <Head>
@@ -15,31 +18,32 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className="btn btn-info">
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-row items-center gap-1 ml-14"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+        <Link
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+        >
+          <div className="tooltip tooltip-primary" data-tip={curProName}>
+            <div className="btn btn-info">
+              <p>
+                Get started by editing&nbsp;
+                <code className={styles.code}>src/pages/index.tsx</code>
+              </p>
+              <div>
+                <span className="flex flex-row items-center gap-1 ml-14">
+                  By{' '}
+                  <Image
+                    src="/vercel.svg"
+                    alt="Vercel Logo"
+                    className={styles.vercelLogo}
+                    width={100}
+                    height={24}
+                    priority
+                  />
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
-
+        </Link>
         <div className={styles.center}>
           <Image className={styles.logo} src="/next.svg" alt="Next.js Logo" width={180} height={37} priority />
           <div className={styles.thirteen}>
